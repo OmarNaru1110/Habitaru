@@ -1,0 +1,43 @@
+﻿@model IEnumerable<IdNameCurStreakDate>
+
+@{
+    ViewData["Title"] = "My Habits";
+}
+
+<center>
+    <a asp-action="add" asp-controller="habit" type="button" class="btn btn-primary btn-lg">
+        Add New Habit
+    </a>
+</center>
+<br />
+<h2><strong>My Habits</strong></h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurStreakDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurStreakDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

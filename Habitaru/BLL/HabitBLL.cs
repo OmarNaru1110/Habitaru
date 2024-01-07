@@ -11,7 +11,7 @@ namespace Habitaru.BLL
         {
             _context = context;
         }
-        public List<IdNameCurStreakDate> GetNameAndCurStreakDate()
+        public List<IdNameCurStreakDate> GetIdNameCurStreakDate()
         {
             var query = _context.Habits.Select(x =>
                 new IdNameCurStreakDate {
@@ -30,14 +30,26 @@ namespace Habitaru.BLL
             var result = _context.Habits.Add(userHabit);
             return true;
         }
-        public void Delete()
+        public bool Delete(int? id)
         {
-            throw new NotImplementedException();
+            if(id == null) 
+                return false;
+            var userHabit = _context.Habits.FirstOrDefault(x=>x.Id==id.Value);
+            if (userHabit == null)
+                return false;
+            _context.Habits.Remove(userHabit);
+            return true;
         }
 
-        public void Update()
+        public bool Update(int? id)
         {
-            throw new NotImplementedException();
+            if (id == null) 
+                return false;
+            var userHabit = _context.Habits.FirstOrDefault(x => x.Id == id.Value);
+            if (userHabit == null)
+                return false;
+            _context.Habits.Update(userHabit);
+            return true;
         }
     }
 }

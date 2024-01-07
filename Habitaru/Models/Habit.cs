@@ -7,10 +7,11 @@
         public int ResetCount { get; set; } = 0;
         public DateTime FirstStreakDate { get; set; }
         public DateTime CurStreakDate { get; set; }
-        public DateTime MaxStreakPeriod{ get; set; } = DateTime.MinValue;
-        public DateTime MinStreakPeriod { get; set; } = DateTime.MaxValue;
-        public DateTime AvgStreakPeriod { get; set; }
-        public DateTime PrevStreakPeriod{ get; set; } = DateTime.MinValue;
+        // all in minutes
+        public int MaxStreakPeriod { get; set; } = int.MinValue;
+        public int MinStreakPeriod { get; set; } = int.MaxValue;
+        public int AvgStreakPeriod { get; set; } = 1;
+        public int PrevStreakPeriod { get; set; } = 1;
 
     }
 }

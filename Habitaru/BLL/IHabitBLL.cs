@@ -4,11 +4,11 @@ namespace Habitaru.BLL
 {
     public interface IHabitBLL
     {
-        public List<IdNameCurStreakDate> GetNameAndCurStreakDate(); 
+        public List<IdNameCurStreakDate> GetIdNameCurStreakDate(); 
         public List<Habit> GetAll(); 
-        public void Add();
-        public void Delete();
-        public void Update();
+        public bool Add(Habit userHabit);
+        public bool Delete(int? id);
+        public bool Update(int? id);
 
     }
 }

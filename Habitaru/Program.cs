@@ -1,3 +1,4 @@
+using Habitaru.BLL;
 using Habitaru.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,7 @@ namespace Habitaru
                 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
+            builder.Services.AddScoped<IHabitBLL,HabitBLL>();
 
             var app = builder.Build();
 
@@ -36,7 +38,7 @@ namespace Habitaru
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Habit}/{action=Index}/{id?}");
 
             app.Run();
         }

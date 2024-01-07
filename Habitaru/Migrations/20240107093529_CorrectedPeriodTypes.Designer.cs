@@ -4,6 +4,7 @@ using Habitaru.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Habitaru.Migrations
 {
     [DbContext(typeof(HabitContext))]
-    partial class HabitContextModelSnapshot : ModelSnapshot
+    [Migration("20240107093529_CorrectedPeriodTypes")]
+    partial class CorrectedPeriodTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,27 +33,15 @@ namespace Habitaru.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AvgStreakPeriod")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CurStreakDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FirstStreakDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MaxStreakPeriod")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MinStreakPeriod")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PrevStreakPeriod")
-                        .HasColumnType("int");
 
                     b.Property<int>("ResetCount")
                         .HasColumnType("int");
