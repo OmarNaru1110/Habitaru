@@ -1,21 +1,22 @@
-﻿using Habitaru.BLL;
-using Habitaru.Context;
-using Habitaru.Models;
+﻿using Habitaru.Models;
+using Habitaru.Repositories.IRepositories;
+using Habitaru.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 
 namespace Habitaru.Controllers
 {
     public class HabitController : Controller
     {
-        private readonly IHabitBLL habitBll;
+        private readonly IHabitService _habitService;
 
-        public HabitController(IHabitBLL habitBll)
+        public HabitController(IHabitService habitService)
         {
-            this.habitBll = habitBll;
+            _habitService = habitService;
         }
         public IActionResult Index()
         {
-            List<IdNameCurStreakDate> habits = habitBll.GetIdNameCurStreakDate();
+            List<IdNameCurStreakDate> habits = _habitService.GetIdNameCurStreakDate();
 
             return View(habits);
         }
@@ -24,13 +25,30 @@ namespace Habitaru.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Add(Habit habit)
-        //{
-        //    habit.ResetCount = 0;
-        //    habit.CurStreakDate = habit.FirstStreakDate;
-        //    var date = habit.FirstStreakDate - DateTime.Now;
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Add(Habit habit)
+        {
+            habit.CurStreakDate = habit.FirstStreakDate;
+            if (ModelState.IsValid)
+            {
+                _habitService.Add(habit);
+                var date = habit.CurStreakDate - DateTime.Now;
+                
+                return RedirectToAction("Index");
+            }
+            else
+                return View(habit);
+        }
+        public IActionResult Details(int? id)
+        {
+            var userHabit = _habitService.GetById(id);
+            userHabit = _habitService.CreateHabitDetails(userHabit);
+            if (userHabit == null)
+                return NotFound();
+            _habitService.Update(userHabit);
+            ViewBag.HabitName = userHabit.Name;
+            return View(userHabit);
+        }
     }
 }

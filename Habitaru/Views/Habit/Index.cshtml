@@ -11,33 +11,19 @@
 </center>
 <br />
 <h2><strong>My Habits</strong></h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CurStreakDate)
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CurStreakDate)
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<body style="background-color:#f5f5fd ">
+        @foreach (var item in Model)
+        {
+            <a asp-controller="Habit" asp-action="Details" asp-route-id="@item.Id">
+                <div style="background-color: #fdf247; border-radius: 10px; padding: 10px;">
+                    <h3>@item.Name</h3>
+                    <strong>@(item.CurStreakPeriod.Days)d @(item.CurStreakPeriod.Hours)h @(item.CurStreakPeriod.Minutes)m</strong>
+                </div>
+            </a>
+
+            <br />
+        }
+
+</body>
+
+

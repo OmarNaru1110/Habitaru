@@ -10,27 +10,29 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Add">
-            <div asp-validation-summary="All" class="text-danger"></div>
+        <form asp-action="Add" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <input asp-for="Name" value="@Model?.Name" class="form-control" />
+                <span style="color:red" asp-validation-for="Name" class="text-danger"></span>
             </div>
             <br>
             <div class="form-group">
                 <label asp-for="FirstStreakDate" class="control-label">When was the last time?</label>
-                <input asp-for="FirstStreakDate" class="form-control" />
-                <span asp-validation-for="FirstStreakDate" class="text-danger"></span>
+                <input asp-for="FirstStreakDate" value="@Model?.FirstStreakDate" class="form-control" />
+                <span style="color:red" asp-validation-for="FirstStreakDate" class="text-danger"></span>
             </div>
-  
+            <br />
+            <div>
+                <input type="submit" class="btn btn-primary btn-md" style="font-weight:500"  />
+            </div>
         </form>
+
     </div>
 </div>
 <br />
-<div>
-    <a type="button" class="btn btn-danger btn-sm" asp-action="Index"><strong>Back to my habits</strong></a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

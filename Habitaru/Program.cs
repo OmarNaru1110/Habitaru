@@ -1,5 +1,8 @@
 using Habitaru.BLL;
-using Habitaru.Context;
+using Habitaru.BLL.Context;
+using Habitaru.Repositories.IRepositories;
+using Habitaru.Services;
+using Habitaru.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace Habitaru
@@ -17,7 +20,8 @@ namespace Habitaru
                 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
                 options.UseSqlServer(connectionString);
             });
-            builder.Services.AddScoped<IHabitBLL,HabitBLL>();
+            builder.Services.AddScoped<IHabitRepository,HabitRepository>();
+            builder.Services.AddScoped<IHabitService,HabitService>();
 
             var app = builder.Build();
 

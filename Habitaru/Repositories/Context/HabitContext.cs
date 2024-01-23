@@ -1,12 +1,12 @@
 ﻿using Habitaru.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Habitaru.Context
+namespace Habitaru.BLL.Context
 {
-    public class HabitContext:DbContext
+    public class HabitContext : DbContext
     {
-        public HabitContext(DbContextOptions<HabitContext> options) :base(options)
-        {   }
+        public HabitContext(DbContextOptions<HabitContext> options) : base(options)
+        { }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Habit>(habit =>

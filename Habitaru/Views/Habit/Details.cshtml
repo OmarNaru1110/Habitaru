@@ -1,0 +1,34 @@
+﻿@model Habit
+
+@{
+    ViewData["Title"] = ViewBag.HabitName;
+}
+
+<h2><strong>@ViewBag.HabitName</strong></h2>
+
+<div>
+    The day you started your streak: @Model.FirstStreakDate.ToString("dd/MM/yyyy")
+</div>
+<div>
+    Maximum streak period: @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Days)d 
+                           @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Hours)h
+                           @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Minutes)m
+</div>
+<div>
+    Average streak period: @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Days)d
+                           @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Hours)h
+                           @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Minutes)m
+</div>
+<div>
+    Minimum streak period: @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Days)d
+                           @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Hours)h
+                           @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Minutes)m
+</div> 
+<div>
+    Minimum streak period: @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Days)d
+                           @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Hours)h
+                           @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Minutes)m
+</div> 
+<div>
+    Number of counter resets: @Model.ResetCount
+</div>
