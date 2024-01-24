@@ -8,7 +8,6 @@ namespace Habitaru.Services
     public class HabitService : IHabitService
     {
         private readonly IHabitRepository _habitRepository;
-
         public HabitService(IHabitRepository habitRepository)
         {
             _habitRepository = habitRepository;
@@ -20,7 +19,6 @@ namespace Habitaru.Services
             _habitRepository.Add(userHabit);
             return true;
         }
-
         public bool Delete(int? id)
         {
             if (id == null)
@@ -31,7 +29,6 @@ namespace Habitaru.Services
             _habitRepository.Delete(userHabit);
             return true;
         }
-
         public List<Habit> GetAll()
         {
             return _habitRepository.GetAll();
@@ -58,10 +55,8 @@ namespace Habitaru.Services
             //periods in minutes
             if (habit == null)
                 return null;
-            
-            habit.MaxStreakPeriod = Math.Max(
-                habit.MaxStreakPeriod,
-                (int)(DateTime.Now - habit.CurStreakDate).TotalMinutes);
+
+            habit.MaxStreakPeriod = GetMaxPeriod(habit.MaxStreakPeriod, habit.CurStreakDate);
 
             try
             {
@@ -72,11 +67,39 @@ namespace Habitaru.Services
                 habit.AvgStreakPeriod = (int)(DateTime.Now - habit.FirstStreakDate).TotalMinutes;
             }
 
-            habit.MinStreakPeriod = Math.Min(
-                habit.MinStreakPeriod,
-                (int)(DateTime.Now - habit.CurStreakDate).TotalMinutes);
+            habit.MinStreakPeriod = GetMinPeriod(habit.MinStreakPeriod, habit.CurStreakDate);
 
             return habit;
         }
+        public bool ResetCounter(int? id)
+        {
+            if (id == null)
+                return false;
+            var habit = GetById(id);
+            if (habit == null) 
+                return false;
+            habit.ResetCount++;
+            habit.PrevStreakPeriod = (int)(DateTime.Now - habit.CurStreakDate).TotalMinutes;
+            habit.CurStreakDate = DateTime.Now;
+            habit.MaxStreakPeriod = GetMaxPeriod(habit.MaxStreakPeriod, habit.CurStreakDate);
+            habit.MinStreakPeriod = GetMinPeriod(habit.MinStreakPeriod, habit.CurStreakDate);
+            habit.AvgStreakPeriod = (int)(DateTime.Now - habit.FirstStreakDate).TotalMinutes / habit.ResetCount;
+            _habitRepository.Save();
+
+            return true;
+        }
+        public int GetMaxPeriod(int MaxStreakPeriod, DateTime CurStreakDate)
+        {
+            return Math.Max(
+                            MaxStreakPeriod,
+                            (int)(DateTime.Now - CurStreakDate).TotalMinutes);
+        }
+        public int GetMinPeriod(int MinStreakPeriod, DateTime CurStreakDate)
+        {
+            return Math.Min(
+                            MinStreakPeriod,
+                            (int)(DateTime.Now - CurStreakDate).TotalMinutes);
+        }
+    
     }
 }

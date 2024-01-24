@@ -25,10 +25,14 @@
                            @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Minutes)m
 </div> 
 <div>
-    Minimum streak period: @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Days)d
+    Previous streak period: @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Days)d
                            @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Hours)h
                            @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Minutes)m
 </div> 
 <div>
     Number of counter resets: @Model.ResetCount
 </div>
+<br />
+<a asp-action="reset" asp-controller="habit" asp-route-id="@Model.Id" type="button" class="btn btn-danger btn-md">
+    Reset Timer
+</a>

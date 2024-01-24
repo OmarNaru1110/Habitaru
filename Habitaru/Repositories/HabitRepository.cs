@@ -40,7 +40,6 @@ namespace Habitaru.BLL
             _context.Habits.Remove(userHabit);
             Save();
         }
-
         public void Update(Habit userHabit)
         {
             _context.Habits.Update(userHabit);

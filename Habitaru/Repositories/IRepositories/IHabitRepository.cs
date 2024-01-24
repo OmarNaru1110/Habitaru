@@ -11,6 +11,6 @@ namespace Habitaru.Repositories.IRepositories
         public void Add(Habit userHabit);
         public void Delete(Habit userHabit);
         public void Update(Habit userHabit);
-
+        public void Save();
     }
 }

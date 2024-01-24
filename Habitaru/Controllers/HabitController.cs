@@ -32,8 +32,8 @@ namespace Habitaru.Controllers
             habit.CurStreakDate = habit.FirstStreakDate;
             if (ModelState.IsValid)
             {
+                habit = _habitService.CreateHabitDetails(habit);
                 _habitService.Add(habit);
-                var date = habit.CurStreakDate - DateTime.Now;
                 
                 return RedirectToAction("Index");
             }
@@ -49,6 +49,12 @@ namespace Habitaru.Controllers
             _habitService.Update(userHabit);
             ViewBag.HabitName = userHabit.Name;
             return View(userHabit);
+        }
+        public IActionResult Reset(int? id)
+        {
+            if (_habitService.ResetCounter(id) == false)
+                return NotFound();
+            return RedirectToAction("Details", new {ID=id});
         }
     }
 }

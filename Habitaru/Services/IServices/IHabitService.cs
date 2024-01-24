@@ -11,5 +11,9 @@ namespace Habitaru.Services.IServices
         public bool Update(Habit userHabit);
         public Habit GetById(int? id);
         public Habit CreateHabitDetails(Habit habit);
+        public bool ResetCounter(int? id);
+        public int GetMaxPeriod(int MaxStreakPeriod, DateTime CurStreakDate);
+        public int GetMinPeriod(int MinStreakPeriod, DateTime CurStreakDate);
+
     }
 }
