@@ -1,0 +1,43 @@
+﻿@model UserRegisterationVM
+@{
+    ViewData["Title"] = "Register";
+}
+<h1>Register</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" value="@Model?.Username" class="form-control" />
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">Password</label>
+                <input asp-for="Password" value="OmarNaruSubs#2002" class="form-control" />
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label">Confirm Password</label>
+                <input asp-for="ConfirmPassword" value="OmarNaruSubs#2002" class="form-control" />
+            </div>
+            <br />
+            <div>
+                <input type="submit" class="btn btn-primary btn-md" style="font-weight:500" />
+                <p><a asp-action="login"> sign in </a></p>
+            </div>
+        </form>
+
+    </div>
+</div>
+<br />
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

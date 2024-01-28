@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace Habitaru.Models
 {
     public class Habit
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
+        public virtual ApplicationUser User { get; set; } 
         [Required]
         public string Name { get; set; }
         public int ResetCount { get; set; } = 0;

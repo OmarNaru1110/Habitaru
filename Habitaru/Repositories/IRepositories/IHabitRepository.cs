@@ -5,7 +5,7 @@ namespace Habitaru.Repositories.IRepositories
 {
     public interface IHabitRepository
     {
-        public List<IdNameCurStreakDate> GetIdNameCurStreakDate();
+        public List<IdNameCurStreakDate> GetIdNameCurStreakDate(int userId);
         public List<Habit> GetAll();
         public Habit GetById(int? id);
         public void Add(Habit userHabit);

@@ -12,16 +12,16 @@ namespace Habitaru.BLL
         {
             _context = context;
         }
-        public List<IdNameCurStreakDate> GetIdNameCurStreakDate()
+        public List<IdNameCurStreakDate> GetIdNameCurStreakDate(int userId)
         {
-            var query = _context.Habits.Select(x =>
-                new IdNameCurStreakDate {
+            var query = _context.Habits.Where(x => x.UserId == userId)
+                .Select(x => new IdNameCurStreakDate
+                {
                     Id = x.Id,
                     Name = x.Name,
                     CurStreakDate = x.CurStreakDate,
-                    CurStreakPeriod = DateTime.Now- x.CurStreakDate
-                }
-            );;
+                    CurStreakPeriod = DateTime.Now - x.CurStreakDate
+                });
             return query.ToList();
         }
         public List<Habit> GetAll() => _context.Habits.ToList();

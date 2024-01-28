@@ -8,12 +8,16 @@ namespace Habitaru.Services
     public class HabitService : IHabitService
     {
         private readonly IHabitRepository _habitRepository;
-        public HabitService(IHabitRepository habitRepository)
+        private readonly IAccountService _accountService;
+
+        public HabitService(IHabitRepository habitRepository,IAccountService accountService)
         {
             _habitRepository = habitRepository;
+            _accountService = accountService;
         }
         public bool Add(Habit userHabit)
         {
+            
             if (userHabit == null)
                 return false;
             _habitRepository.Add(userHabit);
@@ -41,7 +45,10 @@ namespace Habitaru.Services
         }
         public List<IdNameCurStreakDate> GetIdNameCurStreakDate()
         {
-            return _habitRepository.GetIdNameCurStreakDate();
+            var userId = _accountService.GetCurrentUserId();
+            if (userId == null)
+                return null;
+            return _habitRepository.GetIdNameCurStreakDate(userId.Value);
         }
         public bool Update(Habit userHabit)
         {
@@ -55,6 +62,11 @@ namespace Habitaru.Services
             //periods in minutes
             if (habit == null)
                 return null;
+            var userId = _accountService.GetCurrentUserId();
+            if (userId == null)
+                return null;
+
+            habit.UserId = userId.Value;
 
             habit.MaxStreakPeriod = GetMaxPeriod(habit.MaxStreakPeriod, habit.CurStreakDate);
 

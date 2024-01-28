@@ -1,11 +1,17 @@
 ﻿using Habitaru.Models;
 using Habitaru.Repositories.IRepositories;
 using Habitaru.Services.IServices;
+using Habitaru.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Security.Claims;
 
 namespace Habitaru.Controllers
 {
+    [Authorize]
     public class HabitController : Controller
     {
         private readonly IHabitService _habitService;
@@ -17,7 +23,8 @@ namespace Habitaru.Controllers
         public IActionResult Index()
         {
             List<IdNameCurStreakDate> habits = _habitService.GetIdNameCurStreakDate();
-
+            if(habits==null)
+                return NotFound();
             return View(habits);
         }
         [HttpGet]
@@ -27,12 +34,22 @@ namespace Habitaru.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Add(Habit habit)
+        public IActionResult Add(HabitCreationVM habitVM)
         {
-            habit.CurStreakDate = habit.FirstStreakDate;
+            var habit = new Habit
+            {
+                Name = habitVM.Name,
+                FirstStreakDate = habitVM.FirstStreakDate,
+                CurStreakDate = habitVM.FirstStreakDate
+            };
+
+            habit = _habitService.CreateHabitDetails(habit);
+
+            //modelstate isn't valid cuz the User property in habit model
+            //is null which is wrong and i don't know what is the best practice
+            //to use it, so ask chatgpt 
             if (ModelState.IsValid)
             {
-                habit = _habitService.CreateHabitDetails(habit);
                 _habitService.Add(habit);
                 
                 return RedirectToAction("Index");
