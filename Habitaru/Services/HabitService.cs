@@ -54,7 +54,10 @@ namespace Habitaru.Services
         {
             if (userHabit == null)
                 return false;
-            _habitRepository.Update(userHabit);
+            var userId = _accountService.GetCurrentUserId();
+            if (userId == null)
+                return false;
+            _habitRepository.Update(userHabit.Id,userHabit.Name);
             return true;
         }
         public Habit CreateHabitDetails(Habit habit)

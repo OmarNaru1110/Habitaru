@@ -1,4 +1,5 @@
-﻿using Habitaru.Models;
+﻿using Habitaru.Migrations;
+using Habitaru.Models;
 using Habitaru.Repositories.IRepositories;
 using Habitaru.Services.IServices;
 using Habitaru.ViewModels;
@@ -45,9 +46,6 @@ namespace Habitaru.Controllers
 
             habit = _habitService.CreateHabitDetails(habit);
 
-            //modelstate isn't valid cuz the User property in habit model
-            //is null which is wrong and i don't know what is the best practice
-            //to use it, so ask chatgpt 
             if (ModelState.IsValid)
             {
                 _habitService.Add(habit);
@@ -72,6 +70,29 @@ namespace Habitaru.Controllers
             if (_habitService.ResetCounter(id) == false)
                 return NotFound();
             return RedirectToAction("Details", new {ID=id});
+        }
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            var habit = _habitService.GetById(id);
+            if (habit == null)
+                return NotFound();
+            return View(habit);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Habit updatedHabit)
+        {
+            if(_habitService.Update(updatedHabit))
+                return RedirectToAction("Index");
+            ModelState.AddModelError("", "something went wrong\nplz try again");
+            return View(updatedHabit);
+        }
+        public IActionResult Delete(int id)
+        {
+            if(_habitService.Delete(id))
+                return RedirectToAction("Index");
+            return NotFound("something went wrong\nplz try again");
         }
     }
 }

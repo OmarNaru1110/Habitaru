@@ -1,0 +1,34 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>@User.Identity.Name</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label"></label>
+                <div class="d-flex">
+                    <input name="Username" value="@Model" class="form-control" style="width: 70%; margin-right: 10px;" required />
+                    <input value="Save" type="submit" class="btn btn-primary btn-md" style="font-weight: 500; width: 20%;" />
+                </div>
+            </div>
+        </form>
+        <br />
+        <a asp-action="EditPassword" class="btn btn-danger">Edit Password</a>
+
+    </div>
+</div>
+<br />
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

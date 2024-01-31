@@ -10,7 +10,7 @@ namespace Habitaru.Repositories.IRepositories
         public Habit GetById(int? id);
         public void Add(Habit userHabit);
         public void Delete(Habit userHabit);
-        public void Update(Habit userHabit);
+        public void Update(int id, string newHabit);
         public void Save();
     }
 }

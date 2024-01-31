@@ -14,12 +14,24 @@
 <body style="background-color:#f5f5fd ">
         @foreach (var item in Model)
         {
+
+        <div style=" background-color: #ffc56d; border-radius: 10px; padding: 10px; position: relative;">
             <a asp-controller="Habit" asp-action="Details" asp-route-id="@item.Id">
-                <div style="background-color: #fdf247; border-radius: 10px; padding: 10px;">
-                    <h3>@item.Name</h3>
-                    <strong>@(item.CurStreakPeriod.Days)d @(item.CurStreakPeriod.Hours)h @(item.CurStreakPeriod.Minutes)m</strong>
-            </div>
+                <span style="font-size:xx-large; font-weight:600">@item.Name</span>
+                <br />
+                <strong>@(item.CurStreakPeriod.Days)d @(item.CurStreakPeriod.Hours)h @(item.CurStreakPeriod.Minutes)m</strong>
             </a>
+            <div class="dropdown-center position-absolute top-0 end-0">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-action="edit" asp-route-id="@item.Id">Edit</a></li>
+                    <li><a style="color:red" class="dropdown-item" asp-action="delete" asp-route-id="@item.Id">Delete</a></li>
+                </ul>
+            </div>
+        </div>
+
+            
             <br />
         }
 

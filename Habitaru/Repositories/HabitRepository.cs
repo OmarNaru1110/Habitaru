@@ -40,9 +40,10 @@ namespace Habitaru.BLL
             _context.Habits.Remove(userHabit);
             Save();
         }
-        public void Update(Habit userHabit)
+        public void Update(int id,string newHabit)
         {
-            _context.Habits.Update(userHabit);
+            var habit = GetById(id);
+            habit.Name = newHabit;
             Save();
         }
         public void Save()

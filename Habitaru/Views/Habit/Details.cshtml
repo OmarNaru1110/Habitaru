@@ -4,35 +4,84 @@
     ViewData["Title"] = ViewBag.HabitName;
 }
 
-<h2><strong>@ViewBag.HabitName</strong></h2>
-
-<div>
-    The day you started your streak: @Model.FirstStreakDate.ToString("dd/MM/yyyy")
-</div>
-<div>
-    Maximum streak period: @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Days)d 
-                           @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Hours)h
-                           @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Minutes)m
-</div>
-<div>
-    Average streak period: @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Days)d
-                           @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Hours)h
-                           @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Minutes)m
-</div>
-<div>
-    Minimum streak period: @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Days)d
-                           @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Hours)h
-                           @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Minutes)m
-</div> 
-<div>
-    Previous streak period: @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Days)d
-                           @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Hours)h
-                           @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Minutes)m
-</div> 
-<div>
-    Number of counter resets: @Model.ResetCount
-</div>
-<br />
-<a asp-action="reset" asp-controller="habit" asp-route-id="@Model.Id" type="button" class="btn btn-danger btn-md">
-    Reset Timer
-</a>
+<center>
+    <div style='background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h2><strong>@ViewBag.HabitName</strong></h2>
+    </div>
+    <br />
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>The day you started your streak</h3>
+    </div>
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>@Model.FirstStreakDate.ToString("dd/MM/yyyy")</h3>
+    </div>
+    <br />
+    <br />
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>Maximum streak period</h3>
+    </div>
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Days)d
+            @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Hours)h
+            @(TimeSpan.FromMinutes(Model.MaxStreakPeriod).Minutes)m
+        </h3>
+    </div>
+    <br />
+    <br />
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>Average streak period</h3>
+    </div>
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Days)d
+            @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Hours)h
+            @(TimeSpan.FromMinutes(Model.AvgStreakPeriod).Minutes)m
+        </h3>
+    </div>
+    <br />
+    <br />
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            Minimum streak period
+        </h3>
+    </div>
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Days)d
+            @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Hours)h
+            @(TimeSpan.FromMinutes(Model.MinStreakPeriod).Minutes)m
+        </h3>
+    </div>
+    <br />
+    <br />
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            Previous streak period
+        </h3>
+    </div>
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Days)d
+            @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Hours)h
+            @(TimeSpan.FromMinutes(Model.PrevStreakPeriod).Minutes)m
+        </h3>
+    </div>
+    <br />
+    <br />
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            Number of counter resets
+        </h3>
+    </div>
+    <div style='display: inline-block; background-color: #ffc56d; padding: 10px; border-radius: 15px; width: 40%;'>
+        <h3>
+            @Model.ResetCount
+        </h3>
+    </div>
+    <br />
+    <br />
+    <a asp-action="reset" asp-controller="habit" asp-route-id="@Model.Id" type="button" class="btn btn-danger btn-md">
+        Reset Timer
+    </a>
+</center>

@@ -1,0 +1,25 @@
+﻿@model List<ApplicationRole> 
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<center>
+    <a asp-action="add" asp-controller="role" type="button" class="btn btn-primary btn-lg">
+        Add New Role
+    </a>
+</center>
+<br />
+<h2><strong>Roles</strong></h2>
+<body style="background-color:#f5f5fd ">
+    @foreach (var item in Model)
+    {
+        <div style=" background-color: #ffc56d; border-radius: 10px; padding: 10px;">
+            <h3>@item.Name</h3>
+        </div>
+        <br />
+    }
+
+</body>
+
+
