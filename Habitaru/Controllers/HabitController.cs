@@ -37,6 +37,11 @@ namespace Habitaru.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Add(HabitCreationVM habitVM)
         {
+            if (habitVM.FirstStreakDate.CompareTo(DateTime.Now)> 0)
+            {
+                ModelState.AddModelError("", "Your date can't be in the future");
+                return View(habitVM);
+            }
             var habit = new Habit
             {
                 Name = habitVM.Name,

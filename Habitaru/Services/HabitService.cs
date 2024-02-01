@@ -73,11 +73,11 @@ namespace Habitaru.Services
 
             habit.MaxStreakPeriod = GetMaxPeriod(habit.MaxStreakPeriod, habit.CurStreakDate);
 
-            try
+            if (habit.ResetCount != 0)
             {
                 habit.AvgStreakPeriod = (int)(DateTime.Now - habit.FirstStreakDate).TotalMinutes / habit.ResetCount;
             }
-            catch(DivideByZeroException)
+            else
             {
                 habit.AvgStreakPeriod = (int)(DateTime.Now - habit.FirstStreakDate).TotalMinutes;
             }
@@ -115,6 +115,5 @@ namespace Habitaru.Services
                             MinStreakPeriod,
                             (int)(DateTime.Now - CurStreakDate).TotalMinutes);
         }
-    
     }
 }
