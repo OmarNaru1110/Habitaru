@@ -3,6 +3,7 @@ using Habitaru.Models;
 using Habitaru.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -104,6 +105,99 @@ namespace Habitaru.Tests.ControllersTests
             Assert.That(result, Is.TypeOf<ViewResult>());
 
         }
+        [Test]
+        public async Task RegisterUserInRole_InvalidModelState_ReturnsSameView()
+        {
+            //arrange
+            var controller = new AccountController
+                (_userManager.Object, _signInManager.Object, _roleManager.Object);
+            controller.ModelState.AddModelError("", "test");
 
+            //act
+            var result = await controller.RegisterUserInRole(null);
+            
+            //assert
+            Assert.That(result,Is.TypeOf<ViewResult>());    
+        }
+
+        [Test]
+        public async Task RegisterUserInRole_ValidModelState_ReturnsOk()
+        {
+            //arrange
+            var controller = new AccountController
+                (_userManager.Object, _signInManager.Object, _roleManager.Object);
+            
+            _userManager.Setup(x => x.CreateAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Success);
+
+            _userManager.Setup(x => x.AddToRoleAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Success);
+
+            _roleManager.Setup(x=>x.FindByIdAsync(It.IsAny<string>()))
+                .ReturnsAsync(new ApplicationRole { Name = "test" });
+            //act
+            var result = await controller.RegisterUserInRole(new UserRegisterationVM());
+
+            //assert
+            Assert.That(result, Is.TypeOf<OkObjectResult>());
+        }
+        [Test]
+        public async Task RegisterUserInRole_ValidModelState_ReturnsSameView()
+        {
+            //arrange
+            var controller = new AccountController
+                (_userManager.Object, _signInManager.Object, _roleManager.Object);
+
+            _userManager.Setup(x => x.CreateAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Success);
+
+            _userManager.Setup(x => x.AddToRoleAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Failed());
+
+            _roleManager.Setup(x => x.FindByIdAsync(It.IsAny<string>()))
+                .ReturnsAsync(new ApplicationRole { Name = "test" });
+            //act
+            var result = await controller.RegisterUserInRole(new UserRegisterationVM());
+
+            //assert
+            Assert.That(result, Is.TypeOf<ViewResult>());
+        }
+        [Test]
+        public async Task Login_ValidModelState_NullAppUser()
+        {
+            //arrange
+            var controller = new AccountController
+                (_userManager.Object, _signInManager.Object, _roleManager.Object);
+
+            _userManager.Setup(x => x.FindByNameAsync(It.IsAny<string>()))
+                .ReturnsAsync(()=>null);
+
+            //act
+            await controller.Login(new UserLoginVM { Username = "test" });
+            var result = controller.ModelState.Values.Any(x => x.Errors.Any(x => x.ErrorMessage == "username is invalid"));
+
+            //assert
+            Assert.That(result, Is.True);
+        }
+        [Test]
+        public async Task Login_ValidModelState_InvalidPassword()
+        {
+            //arrange
+            var controller = new AccountController
+                (_userManager.Object, _signInManager.Object, _roleManager.Object);
+
+            _userManager.Setup(x => x.FindByNameAsync(It.IsAny<string>()))
+                .ReturnsAsync(new ApplicationUser());
+
+            _userManager.Setup(x => x.CheckPasswordAsync(It.IsAny<ApplicationUser>(), It.IsAny<string>()))
+                .ReturnsAsync(false);
+
+            //act
+            await controller.Login(new UserLoginVM { Username = "test" });
+            var result = controller.ModelState.Values.Any(x => x.Errors.Any(x => x.ErrorMessage == "password is invalid"));
+
+            //assert
+            Assert.That(result, Is.True);
+        }
     }
 }
