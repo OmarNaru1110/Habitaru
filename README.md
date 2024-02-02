@@ -1,1 +1,62 @@
-# Habitaru
+# Habitarau - Habit Tracker
+
+Habitarau is an ASP.NET Core MVC web application designed to help you track and manage your habits. With Habitarau, you can easily add your habits, monitor your progress, and gain insights into your habit-forming journey.
+
+## Features
+
+- **Add Habits**: Seamlessly add your habits to the application for easy tracking.
+  
+- **Track Statistics**: Gain valuable insights into your habits with statistics such as:
+  - Maximum/Minimum/Average streak periods.
+  - Previous streak period.
+  - Current streak period.
+
+- **Reset Timer**: In case you miss a day and couldn't complete your habit, easily reset the timer to start afresh.
+
+## Getting Started
+
+### Prerequisites
+
+- [ASP.NET Core SDK](https://dotnet.microsoft.com/download)
+- [Visual Studio](https://visualstudio.microsoft.com/) or any code editor of your choice.
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/your-username/habitarau.git
+    ```
+
+2. Open the project in Visual Studio or your preferred code editor.
+
+3. Run the application:
+
+    ```bash
+    dotnet run
+    ```
+
+4. Access the application in your web browser at `http://localhost:5000`.
+
+## Usage
+
+1. Navigate to the application and create an account.
+2. Add your habits with the intuitive user interface.
+3. Monitor your habit statistics to stay motivated.
+4. Reset the timer if you miss a day and want to start a new streak.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to Habitarau, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Inspired by the need for a simple and effective habit tracker.
