@@ -31,31 +31,6 @@ Here are some screenshots from the Habitarau application:
 
 <img title="a title" alt="Alt text" src="/images/4. your habits.png">
 
-## Getting Started
-
-### Prerequisites
-
-- [ASP.NET Core SDK](https://dotnet.microsoft.com/download)
-- [Visual Studio](https://visualstudio.microsoft.com/) or any code editor of your choice.
-
-### Installation
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/your-username/habitarau.git
-    ```
-
-2. Open the project in Visual Studio or your preferred code editor.
-
-3. Run the application:
-
-    ```bash
-    dotnet run
-    ```
-
-4. Access the application in your web browser at `http://localhost:5000`.
-
 ## Usage
 
 1. Navigate to the application and create an account.
