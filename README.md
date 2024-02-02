@@ -17,6 +17,25 @@ Habitarau is an ASP.NET Core MVC web application designed to help you track and 
 
 Check out the demo video to see Habitarau in action: [Habitarau Demo Video](https://drive.google.com/file/d/1QCm9HvLTXFbi2ZZz4RUdyZVZWn15VpTv/view?usp=sharing)
 
+## Screenshots
+
+Here are some screenshots from the Habitarau application:
+
+![Screenshot 1](https://drive.google.com/file/d/1-vLjG5pNvzY0SMc80eFuLn-TS5538l2n/view?usp=sharing)
+*Register*
+
+![Screenshot 2]([https://drive.google.com/file/d/1-vLjG5pNvzY0SMc80eFuLn-TS5538l2n/view?usp=sharing](https://drive.google.com/file/d/1VraYgR42KAFRbTOi78457-0It-S-_sgQ/view?usp=sharing))
+*Sign in*
+
+![Screenshot 3](https://drive.google.com/file/d/1OhOF5eyAn8eed0QEDPzYZsCYYkXRtw76/view?usp=sharing)
+*Add Habit*
+
+![Screenshot 4]([https://drive.google.com/file/d/1OhOF5eyAn8eed0QEDPzYZsCYYkXRtw76/view?usp=sharing](https://drive.google.com/file/d/1BaBXakHD1fGo885v-AojrDmCAS0BhOan/view?usp=sharing))
+*Your Habits*
+
+![Screenshot 5]([https://drive.google.com/file/d/1OhOF5eyAn8eed0QEDPzYZsCYYkXRtw76/view?usp=sharing](https://drive.google.com/file/d/1Egn-cfJJr_nj75iyaytuK4uVoqodqqCN/view?usp=sharing))
+*Habit Statistics*
+
 ## Getting Started
 
 ### Prerequisites
