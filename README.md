@@ -45,18 +45,6 @@ Habitarau is an ASP.NET Core MVC web application designed to help you track and 
 3. Monitor your habit statistics to stay motivated.
 4. Reset the timer if you miss a day and want to start a new streak.
 
-## Contributing
-
-Contributions are welcome! If you'd like to contribute to Habitarau, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and submit a pull request.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- Inspired by the need for a simple and effective habit tracker.
