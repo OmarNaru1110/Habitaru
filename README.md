@@ -24,16 +24,12 @@ Here are some screenshots from the Habitarau application:
 <img title="a title" alt="Alt text" src="/images/1..png">
 
 <img title="a title" alt="Alt text" src="/images/2. sign in.png">
-*Sign in*
 
-![Screenshot](https://drive.google.com/file/d/1OhOF5eyAn8eed0QEDPzYZsCYYkXRtw76/view?usp=sharing)
-*Add Habit*
+<img title="a title" alt="Alt text" src="/images/3. add habit.png">
 
-![Screenshot]([https://drive.google.com/file/d/1OhOF5eyAn8eed0QEDPzYZsCYYkXRtw76/view?usp=sharing](https://drive.google.com/file/d/1BaBXakHD1fGo885v-AojrDmCAS0BhOan/view?usp=sharing))
-*Your Habits*
+<img title="a title" alt="Alt text" src="/images/4. your habits.png">
 
-![Screenshot]([https://drive.google.com/file/d/1OhOF5eyAn8eed0QEDPzYZsCYYkXRtw76/view?usp=sharing](https://drive.google.com/file/d/1Egn-cfJJr_nj75iyaytuK4uVoqodqqCN/view?usp=sharing))
-*Habit Statistics*
+<img title="a title" alt="Alt text" src="/images/4. your habits.png">
 
 ## Getting Started
 
