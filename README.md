@@ -13,6 +13,10 @@ Habitarau is an ASP.NET Core MVC web application designed to help you track and 
 
 - **Reset Timer**: In case you miss a day and couldn't complete your habit, easily reset the timer to start afresh.
 
+## Demo
+
+Check out the demo video to see Habitarau in action: [Habitarau Demo Video](https://drive.google.com/file/d/1QCm9HvLTXFbi2ZZz4RUdyZVZWn15VpTv/view?usp=sharing)
+
 ## Getting Started
 
 ### Prerequisites
