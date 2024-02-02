@@ -23,7 +23,7 @@ Here are some screenshots from the Habitarau application:
 
 <img title="a title" alt="Alt text" src="/images/1..png">
 
-![Screenshot]([https://drive.google.com/file/d/1-vLjG5pNvzY0SMc80eFuLn-TS5538l2n/view?usp=sharing](https://drive.google.com/file/d/1VraYgR42KAFRbTOi78457-0It-S-_sgQ/view?usp=sharing))
+<img title="a title" alt="Alt text" src="/images/2. sign in.png">
 *Sign in*
 
 ![Screenshot](https://drive.google.com/file/d/1OhOF5eyAn8eed0QEDPzYZsCYYkXRtw76/view?usp=sharing)
