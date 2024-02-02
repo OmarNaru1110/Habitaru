@@ -21,8 +21,7 @@ Check out the demo video to see Habitarau in action: [Habitarau Demo Video](http
 
 Here are some screenshots from the Habitarau application:
 
-![Screenshot](https://drive.google.com/file/d/1-vLjG5pNvzY0SMc80eFuLn-TS5538l2n/view?usp=sharing)
-*Register*
+![alt text](https://drive.google.com/file/d/1-vLjG5pNvzY0SMc80eFuLn-TS5538l2n/view?usp=sharing)
 
 ![Screenshot]([https://drive.google.com/file/d/1-vLjG5pNvzY0SMc80eFuLn-TS5538l2n/view?usp=sharing](https://drive.google.com/file/d/1VraYgR42KAFRbTOi78457-0It-S-_sgQ/view?usp=sharing))
 *Sign in*
